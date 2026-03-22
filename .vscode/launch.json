@@ -1,0 +1,22 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "java",
+			"name": "KeyloopSchedulerApplication",
+			"request": "launch",
+			"mainClass": "com.keyloop.scheduler.KeyloopSchedulerApplication",
+			"projectName": "keyloop-scheduler",
+			"cwd": "${workspaceFolder}/keyloop-scheduler",
+			"preLaunchTask": "gradle-compile"
+		},
+		{
+			"type": "java",
+			"name": "Attach to Keyloop (Debug)",
+			"request": "attach",
+			"hostName": "localhost",
+			"port": 5005,
+			"projectName": "keyloop-scheduler"
+		}
+	]
+}

@@ -1,0 +1,43 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "gradle-compile",
+			"type": "shell",
+			"command": "./gradlew",
+			"args": ["compileJava"],
+			"options": {
+				"cwd": "${workspaceFolder}/keyloop-scheduler"
+			},
+			"group": "build"
+		},
+		{
+			"label": "gradle-bootRun",
+			"type": "shell",
+			"command": "./gradlew",
+			"args": ["bootRun"],
+			"options": {
+				"cwd": "${workspaceFolder}/keyloop-scheduler"
+			},
+			"group": "none",
+			"presentation": {
+				"reveal": "always",
+				"panel": "new"
+			}
+		},
+		{
+			"label": "gradle-bootRun-debug",
+			"type": "shell",
+			"command": "./gradlew",
+			"args": ["bootRun", "--debug-jvm"],
+			"options": {
+				"cwd": "${workspaceFolder}/keyloop-scheduler"
+			},
+			"group": "none",
+			"presentation": {
+				"reveal": "always",
+				"panel": "new"
+			}
+		}
+	]
+}

@@ -1,0 +1,6 @@
+{
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.import.gradle.enabled": true,
+  "java.project.resourceFilters": ["node_modules", ".git"],
+  "java.debug.settings.onBuildFailureProceed": true
+}

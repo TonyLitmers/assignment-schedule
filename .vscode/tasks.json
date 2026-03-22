@@ -7,7 +7,7 @@
 			"command": "./gradlew",
 			"args": ["compileJava"],
 			"options": {
-				"cwd": "${workspaceFolder}/keyloop-scheduler"
+				"cwd": "${workspaceFolder}/scheduler"
 			},
 			"group": "build"
 		},
@@ -17,7 +17,7 @@
 			"command": "./gradlew",
 			"args": ["bootRun"],
 			"options": {
-				"cwd": "${workspaceFolder}/keyloop-scheduler"
+				"cwd": "${workspaceFolder}/scheduler"
 			},
 			"group": "none",
 			"presentation": {
@@ -31,7 +31,7 @@
 			"command": "./gradlew",
 			"args": ["bootRun", "--debug-jvm"],
 			"options": {
-				"cwd": "${workspaceFolder}/keyloop-scheduler"
+				"cwd": "${workspaceFolder}/scheduler"
 			},
 			"group": "none",
 			"presentation": {

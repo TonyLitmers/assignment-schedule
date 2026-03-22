@@ -1,31 +1,29 @@
 services:
   postgres:
     image: postgres:16-alpine
-    container_name: keyloop-postgres
+    container_name: scheduler-postgres
     environment:
-      POSTGRES_DB: keyloop_scheduler
-      POSTGRES_USER: keyloop
-      POSTGRES_PASSWORD: keyloop
+      POSTGRES_DB: scheduler
+      POSTGRES_USER: scheduler
+      POSTGRES_PASSWORD: scheduler
     ports:
       - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U keyloop -d keyloop_scheduler"]
+      test: ["CMD-SHELL", "pg_isready -U scheduler -d scheduler"]
       interval: 3s
       timeout: 3s
       retries: 5
 
   app:
     build:
-      context: ./keyloop-scheduler
+      context: ./scheduler
       dockerfile: Dockerfile
-    container_name: keyloop-app
+    container_name: scheduler-app
     depends_on:
       postgres:
         condition: service_healthy
-    environment:
-      SPRING_PROFILES_ACTIVE: docker
     ports:
       - "8080:8080"
 

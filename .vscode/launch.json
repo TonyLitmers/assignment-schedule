@@ -6,8 +6,8 @@
 			"name": "KeyloopSchedulerApplication",
 			"request": "launch",
 			"mainClass": "com.keyloop.scheduler.KeyloopSchedulerApplication",
-			"projectName": "keyloop-scheduler",
-			"cwd": "${workspaceFolder}/keyloop-scheduler",
+			"projectName": "scheduler",
+			"cwd": "${workspaceFolder}/scheduler",
 			"preLaunchTask": "gradle-compile"
 		},
 		{
@@ -16,7 +16,7 @@
 			"request": "attach",
 			"hostName": "localhost",
 			"port": 5005,
-			"projectName": "keyloop-scheduler"
+			"projectName": "scheduler"
 		}
 	]
 }

@@ -12,16 +12,9 @@ Dealership service appointment scheduling system – Resource Constrained Bookin
 
 ---
 
-## 🚀 Build & Run
+## 🚀 Run (Docker only)
 
-### Build
-
-```bash
-cd keyloop-scheduler
-./gradlew build
-```
-
-### Run with Docker Compose
+From project root:
 
 ```bash
 docker compose up --build
@@ -31,19 +24,12 @@ docker compose up --build
 - **App** on port 8080
 - Hibernate creates schema + DatabaseSeeder seeds data when DB is empty
 
-### Run locally (requires PostgreSQL)
-
-```bash
-docker compose up -d postgres
-cd keyloop-scheduler && ./gradlew bootRun
-```
-
 ---
 
 ## 🧪 Test
 
 ```bash
-cd keyloop-scheduler
+cd scheduler
 ./gradlew test
 ```
 

@@ -66,9 +66,42 @@
 
 ---
 
-## 4. Data Flow
+## 4. Database Schema & Entity Relationships
 
-### 4.1 Create Appointment (POST /api/appointments)
+### Database relationship diagram
+
+```
+  customer          dealership         service_type
+      │                  │                   │
+      │ 1:*              │ 1:*               │
+      ▼                  ├──*                │
+  vehicle           service_bay              │
+      │                  technician          │
+      │                  │                   │
+      └──────────────────┴───────────────────┘
+                         │
+                         │ (all N:1)
+                         ▼
+                    appointment
+```
+
+### Entity summary
+
+| Table | Relationships |
+|-------|---------------|
+| customer | 1 → N vehicle |
+| vehicle | N → 1 customer |
+| dealership | 1 → N service_bay, 1 → N technician |
+| service_type | standalone |
+| service_bay | N → 1 dealership |
+| technician | N → 1 dealership |
+| appointment | N → 1 customer, vehicle, service_type, service_bay, technician |
+
+---
+
+## 5. Data Flow
+
+### 5.1 Create Appointment (POST /api/appointments)
 
 ```
 1. Client sends JSON: {customerId, vehicleId, dealershipId, serviceTypeId, desiredStartTime}
@@ -85,7 +118,7 @@
 4. Controller returns 201 Created + JSON response
 ```
 
-### 4.2 Get Appointment (GET /api/appointments/{id})
+### 5.2 Get Appointment (GET /api/appointments/{id})
 
 ```
 1. Client sends GET with id
@@ -97,7 +130,7 @@
 
 ---
 
-## 5. Technology Choices & Rationale
+## 6. Technology Choices & Rationale
 
 | Technology | Rationale |
 |------------|-----------|
@@ -111,7 +144,7 @@
 
 ---
 
-## 6. Observability Strategy
+## 7. Observability Strategy
 
 | Mechanism | Description |
 |-----------|-------------|
@@ -122,7 +155,7 @@
 
 ---
 
-## 7. Scalability, Performance, Reliability, Maintainability
+## 8. Scalability, Performance, Reliability, Maintainability
 
 | Criterion | Implementation |
 |-----------|----------------|
@@ -134,7 +167,7 @@
 
 ---
 
-## 8. Concurrent Request Handling (Two Requests at Same Time)
+## 9. Concurrent Request Handling (Two Requests at Same Time)
 
 When two clients send `POST /api/appointments` simultaneously for the same time slot and dealership, the following sequence occurs:
 
@@ -167,7 +200,7 @@ When two clients send `POST /api/appointments` simultaneously for the same time 
 
 ---
 
-## 9. Future Extensions – Redis
+## 10. Future Extensions – Redis
 
 The current design relies on PostgreSQL row-level locking. For higher scale or different deployment models, Redis can be introduced as an extension:
 
@@ -197,7 +230,7 @@ The current design relies on PostgreSQL row-level locking. For higher scale or d
 
 ---
 
-## 10. AI (GenAI) Usage in Design
+## 11. AI (GenAI) Usage in Design
 
 - **Design phase:** Use AI to brainstorm architecture, suggest component diagrams, and spot gaps.
 - **Technology selection:** Ask AI to compare JPA vs raw SQL, PostgreSQL vs MySQL for this booking use case.
